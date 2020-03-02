@@ -16,6 +16,7 @@
           <tr>
             <th scope="col">Užsakymo Nr.</th>
             <th scope="col">Prekė</th>
+            <th scope="col">Kiekis</th>
             <th scope="col">Užsakovas</th>
             <th scope="col">El.Paštas</th>
             <th scope="col">Tel.Nr</th>
@@ -30,6 +31,7 @@
           <tr>
           <th scope="row">{{$order->id}}</th>
             <td>{{$order->item}}</td>
+            <td>{{$order->quantity}}</td>
             <td>{{$order->name}}</td>
             <td>{{$order->email}}</td>
             <td>{{$order->phone}}</td>

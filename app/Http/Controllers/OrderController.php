@@ -18,14 +18,14 @@ class OrderController extends Controller
 
     public function index()
     {
-        $user = auth()->user()->name;
+        $user = auth()->user();
         $orders = Order::select('*', 'title as item', 'orders.id as id')->join('items','items.id','=','item_id')->get();
         return view('admin.pages.orders', compact('user', 'orders'));
     }
 
     public function order(Order $order)
     {
-        Order::where('id',$order->id)->update(['status' => 'Užsakymas Priimtas']);
+        Order::where('id',$order->id)->update(['status' => 'Užsakymas Ruošiamas']);
         return redirect('/orders');
     }
 

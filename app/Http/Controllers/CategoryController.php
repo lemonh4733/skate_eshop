@@ -20,7 +20,7 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        $user = auth()->user()->name;
+        $user = auth()->user();
         return view('admin.pages.add-cat', compact('user'));
     }
     public function create(Request $request)

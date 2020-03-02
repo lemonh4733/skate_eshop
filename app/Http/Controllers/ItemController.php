@@ -17,7 +17,7 @@ class ItemController extends Controller
     }
     public function index()
     {
-        $user = auth()->user()->name;
+        $user = auth()->user();
         $categories = Category::all();
         return view('admin.pages.add', compact('user', 'categories'));
     }
@@ -47,13 +47,13 @@ class ItemController extends Controller
     public function goods()
     {
         $categories = Category::all();
-        $user = auth()->user()->name;
+        $user = auth()->user();
         $items = Item::select('*' ,'categories.name as category', 'items.id as id')->join('categories', 'categories.id','=','cat_id')->get();
         return view('admin.pages.goods', compact('user', 'items', 'categories'));
     }
     public function edit(Item $item)
     {
-        $user = auth()->user()->name;
+        $user = auth()->user();
         $categories = Category::all();
         if (Gate::allows('edit-delete', $item)) {
             return view('admin.pages.edit', ['item' => $item], compact('user', 'categories'));
@@ -87,7 +87,7 @@ class ItemController extends Controller
             $item->delete();
         }
         else if (Gate::denies('edit-delete', $item)) {
-            $user = auth()->user()->name;
+            $user = auth()->user();
             return view('admin.pages.error', compact('user'));
         }
         return redirect('/goods');

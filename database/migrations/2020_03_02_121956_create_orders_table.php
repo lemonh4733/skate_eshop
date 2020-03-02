@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('phone')->nullable();
             $table->string('address');
+            $table->integer('quantity');
             $table->string('status');
             $table->integer('item_id');
             $table->timestamps();
