@@ -82,7 +82,7 @@ class ItemController extends Controller
     }
     public function destroy(Item $item)
     {
-        
+
         if (Gate::allows('edit-delete', $item)) {
             $item->delete();
         }
@@ -91,5 +91,12 @@ class ItemController extends Controller
             return view('admin.pages.error', compact('user'));
         }
         return redirect('/goods');
+    }
+    public function myItems()
+    {
+        $categories = Category::all();
+        $user = auth()->user();
+        $items = Item::select('*' ,'categories.name as category', 'items.id as id')->join('categories', 'categories.id','=','cat_id')->where('items.user_id',$user->id)->get();
+        return view('admin.pages.my-items', compact('user', 'items', 'categories'));
     }
 }

@@ -6,7 +6,7 @@
         <!-- Page Header -->
         <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                <span class="text-uppercase page-subtitle"> Prekes</span>
+                <span class="text-uppercase page-subtitle"> Visos prekės <a href="/myitems">Mano prekės</a></span>
                 <h3 class="page-title">Visos prekės</h3>
             </div>
         </div>

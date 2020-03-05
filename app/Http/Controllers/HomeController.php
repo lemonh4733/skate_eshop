@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Item;
+use App\Order;
 use File;
 
 class HomeController extends Controller
@@ -29,8 +30,9 @@ class HomeController extends Controller
     {
         $users = User::all();
         $items = Item::all();
+        $orders = Order::all();
         $user = auth()->user();
-        return view('admin.pages.dashb', compact('user', 'items', 'users'));
+        return view('admin.pages.dashb', compact('user', 'items', 'users', 'orders'));
     }
     public function profile() {
         $user = auth()->user();
@@ -41,7 +43,7 @@ class HomeController extends Controller
             'name' => 'required',
             'email' => 'required',
         ]);
-        if($request->hasFile('img')) {
+        if($request->hasFile('img') && $user->img != "usrimg/none.jpg") {
             File::delete('../storage/app/public/'.$user->img);
             $path=$request->file('img')->store('public/usrimg');
             $filename = str_replace('public/',"", $path);

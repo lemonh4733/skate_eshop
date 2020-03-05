@@ -11,6 +11,11 @@
             </div>
         </div>
             <div class="row">
+                @if($message)
+                    <div class="alert alert-danger" role="alert">
+                        {{$message[0]}}
+                    </div>
+                    @endif
     <table class="table table-dark">
         <thead>
           <tr>
@@ -26,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-            
+
     @foreach($orders as $order)
           <tr>
           <th scope="row">{{$order->id}}</th>
@@ -37,7 +42,15 @@
             <td>{{$order->phone}}</td>
             <td>{{$order->address}}</td>
             <td>{{$order->status}}</td>
-            <td><a class="btn btn-primary" href="/order/{{$order->id}}">Priimti užsakymą</a></td>
+            <td>
+                @if ($order->status == "Naujas")
+                <a class="btn btn-primary" href="/order/{{$order->id}}">Priimti užsakymą</a>
+                    @elseif ($order->status == "Užsakymas Ruošiamas")
+                    <a class="btn btn-primary" href="/order/{{$order->id}}/done">Siųsti</a>
+                        @elseif ($order->status == "Išsiųsta")
+                        <p></p>
+                    @endif
+            </td>
           </tr>
     @endforeach
         </tbody>

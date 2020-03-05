@@ -11,51 +11,20 @@
                 <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
         </form>
         <ul class="navbar-nav border-left flex-row ">
-            <li class="nav-item border-right dropdown notifications">
-                <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="nav-link-icon__wrapper">
-                        <i class="material-icons">&#xE7F4;</i>
-                        <span class="badge badge-pill badge-danger">2</span>
-                    </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                            <div class="notification__icon">
-                                <i class="material-icons">&#xE6E1;</i>
-                            </div>
-                        </div>
-                        <div class="notification__content">
-                            <span class="notification__category">Analytics</span>
-                            <p>Your website’s active users count increased by
-                                <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                            <div class="notification__icon">
-                                <i class="material-icons">&#xE8D1;</i>
-                            </div>
-                        </div>
-                        <div class="notification__content">
-                            <span class="notification__category">Sales</span>
-                            <p>Last week your store’s sales count decreased by
-                                <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    @if($user->img)
                     <img class="user-avatar rounded-circle mr-2" src={{Storage::url("{$user->img}")}} alt="User Avatar">
+                        @else
+                        <img class="user-avatar rounded-circle mr-2" src="https://www.driven-u.com/wp-content/members/avatar_none.gif" alt="User Avatar">
+                    @endif
                     <span class="d-none d-md-inline-block">{{$user->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="/profile">
                         <i class="material-icons">&#xE7FD;</i> Redaguoti profilį</a>
-                    <a class="dropdown-item" href="/goods">
-                        <i class="material-icons">vertical_split</i> Prekės</a>
+                    <a class="dropdown-item" href="/myitems">
+                        <i class="material-icons">vertical_split</i> Mano prekės</a>
                     <a class="dropdown-item" href="/addnew">
                         <i class="material-icons">note_add</i> Pridėti prekę</a>
                     <div class="dropdown-divider"></div>

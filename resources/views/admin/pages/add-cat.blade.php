@@ -27,6 +27,25 @@
                         <input class="btn btn-primary" type="submit" value="Įdėti">
                     </div>
                 </form>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Kategorija</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach($categories as $cat)
+                <tr>
+                    <td>{{$cat->name}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="/delete/cat/{{$cat->id}}">Šalinti</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
             </div>
         </div>
     </div>
